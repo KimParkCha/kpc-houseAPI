@@ -1,5 +1,6 @@
 package com.ssafy.kpc.house.model.service;
 
+import com.ssafy.kpc.house.model.dto.ComplexCoordDto;
 import com.ssafy.kpc.house.model.entity.complex.Complex;
 import com.ssafy.kpc.house.model.repository.ComplexRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,5 +22,13 @@ public class ComplexService {
             Double pa,
             Double qa) {
         return complexRepository.selectByCoord(ha, oa, pa, qa);
+    }
+    public List<ComplexCoordDto> findCoordByCoord(
+            Double ha,
+            Double oa,
+            Double pa,
+            Double qa
+    ) {
+        return complexRepository.selectCoordByCoord(ha, oa, pa, qa);
     }
 }

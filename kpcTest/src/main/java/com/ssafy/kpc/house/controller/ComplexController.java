@@ -1,5 +1,6 @@
 package com.ssafy.kpc.house.controller;
 
+import com.ssafy.kpc.house.model.dto.ComplexCoordDto;
 import com.ssafy.kpc.house.model.entity.complex.Complex;
 import com.ssafy.kpc.house.model.entity.complexDetail.ComplexDetail;
 import com.ssafy.kpc.house.model.service.ComplexDetailService;
@@ -41,6 +42,18 @@ public class ComplexController {
         List<Complex> response = complexService.findByCoord(ha, oa, pa, qa);
         log.info("response : {}", response);
         return new ResponseEntity<List<Complex>>(response, HttpStatus.OK);
+    }
+    @GetMapping("/coord/list")
+    public ResponseEntity<List<ComplexCoordDto>> findCoordByCoord(
+            @RequestParam("ha") Double ha,
+            @RequestParam("oa") Double oa,
+            @RequestParam("pa") Double pa,
+            @RequestParam("qa") Double qa
+    ){
+        List<ComplexCoordDto> response = complexService.findCoordByCoord(ha, oa, pa, qa);
+        ComplexCoordDto c = response.get(0);
+        log.info("response : {}", response.get(0).getComplexNo());
+        return new ResponseEntity<List<ComplexCoordDto>>(response, HttpStatus.OK);
     }
 
     @GetMapping("/{complexNo}")
