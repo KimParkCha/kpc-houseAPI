@@ -51,8 +51,6 @@ public class ComplexController {
             @RequestParam("qa") Double qa
     ){
         List<ComplexCoordDto> response = complexService.findCoordByCoord(ha, oa, pa, qa);
-        ComplexCoordDto c = response.get(0);
-        log.info("response : {}", response.get(0).getComplexNo());
         return new ResponseEntity<List<ComplexCoordDto>>(response, HttpStatus.OK);
     }
 
