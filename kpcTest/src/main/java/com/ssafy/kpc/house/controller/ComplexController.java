@@ -64,4 +64,13 @@ public class ComplexController {
         else
             return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
+
+    @GetMapping("/pyeongdetail/list/{complexNo}")
+    public ResponseEntity<ComplexDetail> getPyeongDetails(@PathVariable("complexNo") Long complexNo){
+        Optional<ComplexDetail> res = complexDetailService.findByComplexNo(complexNo);
+        if (res.isPresent())
+            return new ResponseEntity<ComplexDetail>(res.get(), HttpStatus.OK);
+        else
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+    }
 }
